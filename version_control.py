@@ -10,20 +10,28 @@ def main():
 
     def encode():
         pass_to_encode = input("Please enter your password to encode: ")
-        encoded_pass = " "
+        encoded_pass = ""
         for number in pass_to_encode:
-            new_digit = str(int(number) + 3)
+            new_digit = str((int(number) + 3)%10)
             encoded_pass += new_digit
-        return
+        return encoded_pass
+    def decode(pass_to_decode):
+        decoded_pass = ""
+        for number in pass_to_decode:
+            new_digit = str((int(number)-3)%10)
+            decoded_pass += new_digit
 
+        print(f"The encoded password is {pass_to_decode}, and the original password is {decoded_pass}.\n")
+    
+    password = ""
     while True:
         menu()
         menuOption = input("Please enter an option: ")
         if menuOption == "1":
-            encode()
+            password = encode()
             print("Your password has been encoded and stored!\n")
         elif menuOption == "2":
-            pass
+            decode(password)
         elif menuOption == "3":
             break
 
